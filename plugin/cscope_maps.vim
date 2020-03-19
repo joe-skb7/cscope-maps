@@ -11,12 +11,30 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 
-    " add any cscope database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add the database pointed to by environment variable
-    elseif $CSCOPE_DB != ""
+    " Find and add a cscope file. Either from CSCOPE_DB for by searcing for it
+    " recursively starting in the CWD and going up to /
+
+    if $CSCOPE_DB != ""
         cs add $CSCOPE_DB
+    else
+        " Get all parts of our curent path
+        let dirs = split($PWD, '/')
+        " Start building a list of paths in which to look for cscope.out
+        let paths = ['/']
+        " /foo/bar/baz would result in the `paths` array containing:
+        " [/ /foo /foo/bar /foo/bar/baz]
+        for d in dirs
+            let paths = add(paths, paths[len(paths) - 1] . d . '/')
+        endfor
+
+        " List is backwards search order, so reverse it.
+        for d in reverse(paths)
+            let cscope_file = d . "/cscope.out"
+            if filereadable(cscope_file)
+                execute('cs add ' . cscope_file)
+                break
+            endif
+        endfor
     endif
 
     " show msg when any other cscope db added
