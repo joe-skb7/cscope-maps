@@ -39,7 +39,7 @@ if has("cscope")
     "
     " Below are three sets of the maps: one set that just jumps to your
     " search result, one that splits the existing vim window horizontally and
-    " diplays your search result in the new window, and one that does the same
+    " displays your search result in the new window, and one that does the same
     " thing, but does a vertical split instead (vim 6 only).
     "
     " I've used CTRL-\ and CTRL-@ as the starting keys for these maps, as it's
@@ -74,7 +74,7 @@ if has("cscope")
     nmap <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>
 
 
-    " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
+    " Using 'CTRL-spacebar' (interpreted as CTRL-@ by vim) then a search type
     " makes the vim window split vertically, with search result displayed in
     " the new window.
     "
