@@ -12,7 +12,12 @@
 "
 " Happy cscoping,
 "
-" Jason Duell       jduell@alumni.princeton.edu     2002/3/7
+" Original author:
+"   Jason Duell       <jduell@alumni.princeton.edu>   2002/3/7
+"
+" Other contributors:
+"   Sam Protsenko     <joe.skb7@gmail.com>            2020
+"   Pete Dietl        <petedietl@gmail.com>           2020
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " This tests to see if vim was configured with the '--enable-cscope' option
