@@ -1,29 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CSCOPE settings for vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" This file contains some boilerplate settings for vim's cscope interface,
-" plus some keyboard mappings that I've found useful.
-"
-" USAGE:
-" -- vim 6:     Stick this file in your ~/.vim/plugin directory (or in a
-"               'plugin' directory in some other directory that is in your
-"               'runtimepath'.
-"
-" -- vim 5:     Stick this file somewhere and 'source cscope.vim' it from
-"               your ~/.vimrc file (or cut and paste it into your .vimrc).
-"
-" NOTE:
-" These key maps use multiple keystrokes (2 or 3 keys).  If you find that vim
-" keeps timing you out before you can complete them, try changing your timeout
-" settings, as explained below.
-"
-" Happy cscoping,
-"
-" Jason Duell       jduell@alumni.princeton.edu     2002/3/7
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim...
 if has("cscope")
@@ -37,12 +11,30 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 
-    " add any cscope database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add the database pointed to by environment variable
-    elseif $CSCOPE_DB != ""
+    " Find and add a cscope file. Either from CSCOPE_DB for by searcing for it
+    " recursively starting in the CWD and going up to /
+
+    if $CSCOPE_DB != ""
         cs add $CSCOPE_DB
+    else
+        " Get all parts of our curent path
+        let dirs = split($PWD, '/')
+        " Start building a list of paths in which to look for cscope.out
+        let paths = ['/']
+        " /foo/bar/baz would result in the `paths` array containing:
+        " [/ /foo /foo/bar /foo/bar/baz]
+        for d in dirs
+            let paths = add(paths, paths[len(paths) - 1] . d . '/')
+        endfor
+
+        " List is backwards search order, so reverse it.
+        for d in reverse(paths)
+            let cscope_file = d . "/cscope.out"
+            if filereadable(cscope_file)
+                execute('cs add ' . cscope_file)
+                break
+            endif
+        endfor
     endif
 
     " show msg when any other cscope db added
@@ -61,10 +53,11 @@ if has("cscope")
     "   'f'   file:   open the filename under cursor
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
+    "   'S'   struct: find struct definition under cursor
     "
     " Below are three sets of the maps: one set that just jumps to your
     " search result, one that splits the existing vim window horizontally and
-    " diplays your search result in the new window, and one that does the same
+    " displays your search result in the new window, and one that does the same
     " thing, but does a vertical split instead (vim 6 only).
     "
     " I've used CTRL-\ and CTRL-@ as the starting keys for these maps, as it's
@@ -99,7 +92,7 @@ if has("cscope")
     nmap <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>
 
 
-    " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
+    " Using 'CTRL-spacebar' (interpreted as CTRL-@ by vim) then a search type
     " makes the vim window split vertically, with search result displayed in
     " the new window.
     "
