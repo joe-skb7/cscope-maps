@@ -33,13 +33,12 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 
-    " Find and add a cscope file. Either from CSCOPE_DB for by searcing for it
+    " Find and add a cscope file. Either from CSCOPE_DB or by searching for it
     " recursively starting in the CWD and going up to /
-
     if $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     else
-        " Get all parts of our curent path
+        " Get all parts of our current path
         let dirs = split($PWD, '/')
         " Start building a list of paths in which to look for cscope.out
         let paths = ['/']
