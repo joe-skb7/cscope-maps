@@ -1,3 +1,20 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CSCOPE settings for vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" This file contains some boilerplate settings for vim's cscope interface,
+" plus some keyboard mappings that I've found useful.
+"
+" NOTE:
+" These key maps use multiple keystrokes (2 or 3 keys).  If you find that vim
+" keeps timing you out before you can complete them, try changing your timeout
+" settings, as explained below.
+"
+" Happy cscoping,
+"
+" Jason Duell       jduell@alumni.princeton.edu     2002/3/7
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim...
 if has("cscope")
