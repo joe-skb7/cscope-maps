@@ -1,13 +1,19 @@
 # cscope-maps
 
-Just old good cscope maps for vim, taken from [1].
-Made a mirror just to use it in unified way with pathogen.
+Just old good cscope maps plugin for vim, taken from [1]. Made a mirror just to
+use it in unified way with vim package manager.
 
-## CSCOPE settings for vim
-This file contains some boilerplate settings for vim's cscope interface,
-plus some keyboard mappings that I've found useful.
+## Description
 
-### USAGE:
+This plugin adds some boilerplate settings for vim's cscope interface, plus some
+keyboard mappings that I've found useful.
+
+These key maps use multiple keystrokes (2 or 3 keys). If you find that vim keeps
+timing you out before you can complete them, try changing your timeout settings
+in plugin file.
+
+## Installation
+
 * __vim 8__:  Stick this file in `~/.vim/pack/<dir>/start/cscope/plugin/`
               where `<dir>` is any arbitrary name. Lookup Vim8 packages
               for more details.
@@ -18,10 +24,5 @@ plus some keyboard mappings that I've found useful.
 
 * __vim 5__:  Stick this file somewhere and 'source cscope.vim' it from
               your `~/.vimrc` file (or cut and paste it into your `.vimrc`).
-
-NOTE:
-These key maps use multiple keystrokes (2 or 3 keys).  If you find that vim
-keeps timing you out before you can complete them, try changing your timeout
-settings, as explained below.
 
 [1] http://cscope.sourceforge.net/cscope_maps.vim
