@@ -20,6 +20,12 @@
 "   Pete Dietl        <petedietl@gmail.com>           2020
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if exists("g:loaded_cscope_maps")
+    finish
+endif
+
+let g:loaded_cscope_maps = 1
+
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim...
 if has("cscope")
