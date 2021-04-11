@@ -34,6 +34,9 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 
+    " hide msg when adding cscope database at start
+    set nocscopeverbose
+
     " Find and add a cscope file. Either from CSCOPE_DB or by searching for it
     " recursively starting in the CWD and going up to /
     if $CSCOPE_DB != ""
