@@ -74,6 +74,7 @@ if has("cscope")
     "   'f'   file:   open the filename under cursor
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
+    "   'a'   assignments: find places where this symbol is assigned a value
     "   'S'   struct: find struct definition under cursor
     "
     " Below are three sets of the maps: one set that just jumps to your
@@ -110,6 +111,7 @@ if has("cscope")
     nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
     nmap <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>
 
 
@@ -128,6 +130,7 @@ if has("cscope")
     nmap <C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>a :vert scs find a <C-R>=expand("<cword>")<CR><CR>
     nmap <C-@>S :vert scs find t struct <C-R>=expand("<cword>")<CR> {<CR>
 
 
@@ -142,6 +145,7 @@ if has("cscope")
     nmap <C-@><C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-@><C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@><C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>a :scs find a <C-R>=expand("<cword>")<CR><CR>
     nmap <C-@><C-@>S :scs find t struct <C-R>=expand("<cword>")<CR> {<CR>
 
 
