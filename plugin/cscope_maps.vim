@@ -18,6 +18,7 @@
 " Other contributors:
 "   Sam Protsenko     <joe.skb7@gmail.com>            2020
 "   Pete Dietl        <petedietl@gmail.com>           2020
+"   Do Trung Nguyen   <dtngn@dtngn.org>               2021
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " This tests to see if vim was configured with the '--enable-cscope' option
